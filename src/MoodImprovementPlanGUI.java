@@ -32,10 +32,6 @@ public class MoodImprovementPlanGUI extends javax.swing.JFrame implements Action
     protected Yoga yoga;
     String yogaTips;
     
-    protected String getIsJournalingStatus() {
-        return isJournaling.getText();
-    }
-    
     public MoodImprovementPlanGUI(UserGUI userGUI) {
         initComponents();
         this.userGUI = userGUI;
@@ -137,6 +133,11 @@ public class MoodImprovementPlanGUI extends javax.swing.JFrame implements Action
         });
 
         isJournaling.setText("Yes/No");
+        isJournaling.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                isJournalingActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -256,6 +257,23 @@ public class MoodImprovementPlanGUI extends javax.swing.JFrame implements Action
         JOptionPane.showMessageDialog(this, "Tips written to file:\n" + filePath, "File Written", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_generateTipsActionPerformed
 
+    private void isJournalingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isJournalingActionPerformed
+            // TODO add your handling code here:
+            
+            // Get the user's input from the JTextField
+        String userInput = isJournaling.getText();
+
+        // Update the isJournaling variable based on user input
+        // You might want to perform some validation here to ensure the input is as expected
+        if ("Yes".equalsIgnoreCase(userInput) || "No".equalsIgnoreCase(userInput)) {
+            isJournaling.setText(userInput);
+        } else {
+            // Display an error message or handle invalid input
+            JOptionPane.showMessageDialog(this, "Please enter 'Yes' or 'No' for journaling status.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            // You may choose to set a default value or leave it unchanged in case of invalid input
+        }
+    }//GEN-LAST:event_isJournalingActionPerformed
+
     // Method to write tips to a file and return the file path
     private String writeTipsToFile(String selectedActivity, String tipsMessage){
         
@@ -280,40 +298,41 @@ public class MoodImprovementPlanGUI extends javax.swing.JFrame implements Action
         }
     }
      
-        public String generateTips(String activity, Component parentComponent){
+        public String generateTips(String activity, Component parentComponent) {
             StringBuilder tipsMessage = new StringBuilder();
 
             // Add tips based on the selected activity
-            switch (activity){
+            switch (activity) {
                 case "Breathing":
-                    // Create an instance of the Breathing class and call its generateTips method
                     Breathing breathing = new Breathing(userGUI);
-                    // Display Breathing tips using JOptionPane
-                    tipsMessage.append(breathing.generateTips(activity, parentComponent));;
+                    tipsMessage.append(breathing.generateTips(activity, parentComponent));
                     break;
                 case "Meditation":
-                    // Create an instance of the Meditation class and call its generateTips method
                     Meditation meditation = new Meditation(userGUI);
-                    // Display Meditation tips using JOptionPane
-                    tipsMessage.append(meditation.generateTips(activity, parentComponent));;
+                    tipsMessage.append(meditation.generateTips(activity, parentComponent));
                     break;
                 case "Visualisation":
-                    // Create an instance of the Visualisation class and call its generateTips method
                     Visualisation visualisation = new Visualisation(userGUI);
-                    // Display Visualisation tips using JOptionPane
-                    tipsMessage.append(visualisation.generateTips(activity, parentComponent));;
+                    tipsMessage.append(visualisation.generateTips(activity, parentComponent));
                     break;
                 case "Yoga":
-                    // Create an instance of the Yoga class and call its generateTips method
                     Yoga yoga = new Yoga(userGUI);
-                    // Display yoga tips using JOptionPane
                     tipsMessage.append(yoga.generateTips(activity, parentComponent));
                     break;
                 default:
-                    // Handle default case or provide an error message
                     tipsMessage.append("No tips available for the selected activity.\n");
                     break;
             }
+
+            // Add journaling tips based on user input
+            String journalingInput = isJournaling.getText().trim();
+            if ("Yes".equalsIgnoreCase(journalingInput)) {
+                tipsMessage.append("\nAdditional Tips for Journaling:\n");
+                tipsMessage.append("Include journaling as a reflection tool. Write about your thoughts, feelings, and experiences.");
+            } else if ("No".equalsIgnoreCase(journalingInput)) {
+                tipsMessage.append("\nConsider trying journaling as a way to reflect on your experiences and emotions.");
+            }
+
             return tipsMessage.toString();
         }
     

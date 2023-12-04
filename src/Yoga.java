@@ -49,20 +49,8 @@ public class Yoga  extends MoodImprovementPlanGUI{
                 "Listen to meditation music while attempting Yoga for a tranquil expierence. "
         );
 
-        
-        // Implement tips related to journaling
-        String isJournalingStatus = getIsJournalingStatus();
         StringBuilder tipsMessage = new StringBuilder("Yoga Tips:\n\n");
-
-        if("Yes".equalsIgnoreCase(isJournalingStatus)){
-            tipsMessage.append("Keep up the good work with your journaling!\n");
-            tipsMessage.append("Regular journaling can help you understand your thoughts and emotions better.\n");
-        } else{
-            tipsMessage.append("Consider starting a journaling routine to enhance your mood and self-reflection.\n");
-            tipsMessage.append("Journaling can be a powerful tool for self-reflection and improving your mood.\n");
-        }
-
-        
+      
         // Shuffle the yoga tips for randomisation
         Collections.shuffle(yogaTips);
 

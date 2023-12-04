@@ -49,21 +49,10 @@ public class Breathing extends MoodImprovementPlanGUI{
                 "Stay consistent with your breathing routine to experience long-term benefits. "
         );
 
-        
-        // Implement tips related to journaling
-        String isJournalingStatus = getIsJournalingStatus();
+
         StringBuilder tipsMessage = new StringBuilder("Breathing Tips:\n\n");
 
-        
-        if("Yes".equalsIgnoreCase(isJournalingStatus)){
-            tipsMessage.append("Keep up the good work with your journaling!\n");
-            tipsMessage.append("Regular journaling can enhance the benefits of your breathing exercises.\n");
-        } else{
-            tipsMessage.append("Consider starting a journaling routine to complement your breathing exercises.\n");
-            tipsMessage.append("Journaling can help you track your progress and emotional well-being.\n");
-        }
 
-        
         // Shuffle the breathing tips for randomisation
         Collections.shuffle(breathingTips);
 

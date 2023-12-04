@@ -35,21 +35,8 @@ public class Visualisation extends MoodImprovementPlanGUI{
         visualisationTips.add("Practice gratitude by visualising things you are thankful for in detail. ");
         visualisationTips.add("Visualise a future version of yourself and the positive changes you want to make. ");
 
-        
-        // Implement tips related to journaling
-        String isJournalingStatus = getIsJournalingStatus();
         StringBuilder tipsMessage = new StringBuilder("Visualisation Tips:\n\n");
-
-        
-        if("Yes".equalsIgnoreCase(isJournalingStatus)){
-            tipsMessage.append("Keep up the good work with your journaling!\n");
-            tipsMessage.append("Regular journaling can enhance the effectiveness of your visualisation practice.\n");
-        } else{
-            tipsMessage.append("Consider starting a journaling routine to record your visualisation experiences.\n");
-            tipsMessage.append("Journaling can help you notice patterns and changes in your thoughts and emotions.\n");
-        }
-           
-        
+             
         // Shuffle the Visualisation tips for randomisation
         Collections.shuffle(visualisationTips);
         
