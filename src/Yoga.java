@@ -1,6 +1,5 @@
 
 import java.awt.Component;
-import javax.swing.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;  
@@ -14,7 +13,7 @@ import java.util.List;
  *
  * @author Michael McCreary - x22171363
  */
-public class Yoga  extends MoodImprovementPlanGUI{
+public class Yoga extends MoodImprovementPlanGUI{
     
     
     public Yoga(UserGUI userGUI){
